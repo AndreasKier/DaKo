@@ -1,0 +1,8 @@
+2018-11-21 22:02:29,022 DEBUG [main] - auditLog.TestLog4j main 25 - auditLog.MeinServer@133314b
+ 2018-11-21 22:04:08,526 DEBUG [main] - auditLog.TestLog4j main 25 - auditLog.MeinServer@133314b
+ 2018-11-21 22:04:29,159 DEBUG [main] - auditLog.TestLog4j main 25 - auditLog.MeinServer@133314b
+ 2018-11-21 22:09:11,300 DEBUG [main] - auditLog.TestLog4j main 25 - auditLog.MeinServer@133314b
+ 2018-11-21 22:23:45,364 DEBUG [main] - auditLog.MeinServer main 25 - 159413332
+ 2018-11-21 22:24:54,862 DEBUG [main] - auditLog.MeinServer main 25 - auditLog.MeinServer@9807454
+ 2018-11-21 22:26:15,569 DEBUG [main] - auditLog.MeinServer main 25 - auditLog.MeinServer@9807454
+ 
