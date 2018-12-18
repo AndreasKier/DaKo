@@ -19,6 +19,8 @@ public class AuditLogServer {
 			
 			public void run() {
 				
+				
+				// Ist ein Test
 				// Abbruchbedingung "GUI ordnungsgemaess beendet"
 				while(true) {
 					
