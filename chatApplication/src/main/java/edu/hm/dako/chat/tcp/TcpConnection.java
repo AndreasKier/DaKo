@@ -1,6 +1,7 @@
 package edu.hm.dako.chat.tcp;
 
 import java.io.IOException;
+
 import java.io.Serializable;
 import java.net.Socket;
 import java.net.SocketException;
@@ -39,6 +40,7 @@ public class TcpConnection implements Connection {
 	 * 8192 Byte. Standardgroesse des Sendepuffers einer TCP-Verbindung: 8192
 	 * Byte.
 	 */
+	
 	public TcpConnection(Socket socket, int sendBufferSize, int receiveBufferSize,
 			boolean keepAlive, boolean TcpNoDelay) {
 		this.socket = socket;

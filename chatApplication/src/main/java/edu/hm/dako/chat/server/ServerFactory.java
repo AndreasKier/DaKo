@@ -120,19 +120,7 @@ public final class ServerFactory {
 			ServerSocketInterface serverSocket) {
 		return new DecoratingServerSocket(serverSocket);
 	}
-	// TEST
-//	public void sendMessage(String msg) throws Exception {
-//		try {
-//		System.out.println("[Client] Sende Nachricht....");
-//		PrintWriter pw = new PrintWriter (new OutputStreamWriter(socket.getOutputStream()));
-//		pw.println("");
-//		pw.flush();
-//		System.out.println("[Client] Nachricht gesendet!!!");
-//		pw.close();
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+
 
 	/**
 	 * Dekoriert Server-Socket mit Logging-Funktionalitaet

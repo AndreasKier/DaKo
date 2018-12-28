@@ -18,6 +18,10 @@ public class MeinePDU implements Serializable {
 		bExit = false;
 		iRet = 0;
 	}
+	// TEST
+	public String getMessage() {
+		return comData;
+	}
 	
 	public void copy(MeinePDU tSrc) {
 		
