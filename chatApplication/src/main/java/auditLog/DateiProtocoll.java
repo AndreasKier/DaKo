@@ -2,6 +2,9 @@ package auditLog;
 
 import java.io.*;
 import java.util.*;
+
+import edu.hm.dako.chat.common.PduType;
+
 import java.text.*;
 
 public class DateiProtocoll {
@@ -28,7 +31,7 @@ public class DateiProtocoll {
 			writer.write(AuditLogPDU.getUserName()+ "\t");
 			
 			//if bedingungen: wenn das Event eine Message ist, dann auch die Message ausgeben
-			if(even == messagesent) {
+			if(AuditLogPDU.getPduType().equals(PduType.CHAT_MESSAGE_REQUEST)) {
 				writer.write(AuditLogPDU.getMessage()+ "\t");
 			}
 			

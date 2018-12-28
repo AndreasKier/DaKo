@@ -39,7 +39,7 @@ public class EchoWorkerThread extends Thread {
 	private void echo() throws Exception{
 		try {
 			AuditLogPDU receivedPDU = (AuditLogPDU) con.receive();
-			String message = receivedPDU.getMessage();
+//			String message = receivedPDU.getMessage();
 			con.send(receivedPDU);
 		}catch(Exception e) {
 			System.out.println("Exception beim Empfangen der Nachricht");

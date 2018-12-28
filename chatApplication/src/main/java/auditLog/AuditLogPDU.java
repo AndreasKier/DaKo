@@ -20,22 +20,22 @@ public class AuditLogPDU implements Serializable {
  * 
  */
 	//Aufrufen der ProtocollDatei
-	public static void main(String[] args) {
-		DateiProtocoll test = new DateiProtocoll();
-		test.schreiben();
-	}
+//	public static void main(String[] args) {
+//		DateiProtocoll test = new DateiProtocoll();
+//		test.schreiben();
+//	}
 	
 	// Kommandos bzw. PDU-Typen
-		private PduType pduType;
+		private static PduType pduType;
 
 		// Login-Name des Clients
-		private String userName;
+		private static String userName;
 
 		// Name des Clients, von dem ein Event initiiert wurde
 		private String eventUserName;
 		
 		// Nutzdaten (eigentliche Chat-Nachricht in Textform)
-		private String message;
+		private static String message;
 		
 		// Name des Client-Threads, der den Request absendet
 		private String clientThreadName;
@@ -58,7 +58,7 @@ public class AuditLogPDU implements Serializable {
 		errorCode = NO_ERROR;
 	}
 
-	public PduType getPduType() {
+	public static PduType getPduType() {
 		return pduType;
 	}
 
@@ -66,7 +66,7 @@ public class AuditLogPDU implements Serializable {
 		this.pduType = pduType;
 	}
 
-	public String getUserName() {
+	public static String getUserName() {
 		return userName;
 	}
 
@@ -82,7 +82,7 @@ public class AuditLogPDU implements Serializable {
 		this.eventUserName = eventUserName;
 	}
 
-	public String getMessage() {
+	public static String getMessage() {
 		return message;
 	}
 
@@ -136,10 +136,12 @@ public class AuditLogPDU implements Serializable {
 	}
 	
 	public String toString() {
-
+		
+		
+		// sind static evtl wieder ändern
 		return "\n"
 				+ "ChatPdu ****************************************************************************************************"
-				+ "\n" + "PduType: " + this.pduType + ", " + "\n" + "userName: " + this.userName
+				+ "\n" + "PduType: " + AuditLogPDU.pduType + ", " + "\n" + "userName: " + AuditLogPDU.userName
 				+ ", " + "\n" + "eventUserName: " + this.eventUserName + ", " + "\n"
 				+ "clientThreadName: " + this.clientThreadName + ", " + "\n"
 				+ "serverThreadName: " + this.serverThreadName + ", " + "\n" + "errrorCode: "
