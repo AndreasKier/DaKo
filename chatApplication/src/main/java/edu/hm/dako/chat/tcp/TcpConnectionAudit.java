@@ -3,6 +3,8 @@ package edu.hm.dako.chat.tcp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.Socket;
@@ -21,6 +23,7 @@ import io.netty.handler.codec.serialization.ObjectEncoderOutputStream;
 public class TcpConnectionAudit implements Connection{
 	private ObjectEncoderOutputStream out;
 	private ObjectDecoderInputStream in;
+	
 	private Socket socket;
 	private static Log log = LogFactory.getLog(TcpConnectionAudit.class);
 	
@@ -37,8 +40,8 @@ public class TcpConnectionAudit implements Connection{
 			out = new ObjectEncoderOutputStream(socket.getOutputStream());
 			in = new ObjectDecoderInputStream(socket.getInputStream());
 
-			// out = new ObjectOutputStream(socket.getOutputStream());
-			// in = new ObjectInputStream(socket.getInputStream());
+//			 out = new ObjectOutputStream(socket.getOutputStream());
+//			 in = new ObjectInputStream(socket.getInputStream());
 
 			log.debug("Standardgroesse des Empfangspuffers der Verbindung: "
 					+ socket.getReceiveBufferSize() + " Byte");

@@ -18,6 +18,7 @@ public class AuditLogServer {
 	
 	TcpServerSocketAudit serverSocket = null;
 	TcpConnectionAudit con = null;
+	
 
 	public static void main (String [] args) {
 		System.out.println("Server gestartet");
@@ -32,10 +33,17 @@ public class AuditLogServer {
 
 	// AuditLog ist solange geöffnet wie die Bedingung true ist.
 		
-
 	boolean listening =  true;
+//	while (listening == true)
+//    {
+//        String text = TcpConnectionAudit.getIn().readLine();
+//        System.out.println(text);
+//        if(text.equals("SimpleChatServer beendet sich"))  
+//        {
+//            listening = false;
+//        }
 	while (listening) {
-
+		
 		try {
 			System.out.println("Server wartet auf Verbindung...");
 			TcpConnectionAudit con = server.waitForConnection();
@@ -47,7 +55,8 @@ public class AuditLogServer {
 			server.close();
 			}
 		}
-	}
+	
+    }
 	
 	// Erstellt ein neues Socket.
 	private void createSocket(){
@@ -65,9 +74,10 @@ public class AuditLogServer {
 			System.out.println("Verbindung ok");
 			return (con);
 		}catch(Exception e) {
-			// brauchen anderen return type hab aber keine ahnung....
+		
 			throw new Exception();
 		}
+		
 	}
 	
 	// Schließt die Verbindung.

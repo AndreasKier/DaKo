@@ -29,8 +29,6 @@ public class TcpServerSocketAudit {
 		}
 	}
 		
-	
-
 	// Akzeptiert die Verbindung.
 	public Connection accept() throws IOException {
 		return new TcpConnectionAudit(serverSocket.accept(), false, true);
