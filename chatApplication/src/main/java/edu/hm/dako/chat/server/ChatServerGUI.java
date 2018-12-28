@@ -378,6 +378,7 @@ public class ChatServerGUI extends Application implements ChatServerGuiInterface
 
 				try {
 					chatServer.stop();
+					
 				} catch (Exception e) {
 					log.error("Fehler beim Stoppen des Chat-Servers");
 					ExceptionHandler.logException(e);

@@ -13,24 +13,28 @@ public class TcpServerSocketAudit {
 	private static Log log = LogFactory.getLog(TcpServerSocketAudit.class);
 	
 		// Erstellt einen ServerSocket mit Tcp.
-		public TcpServerSocketAudit(int port) throws BindException, IOException{
-			try {
-				serverSocket = new java.net.ServerSocket(port);
-			} catch (BindException e) { 
-				log.debug(
-						"Port " + port + " auf dem Rechner schon in Benutzung, Bind Exception: " + e);
-				throw e;
-			} catch (IOException e) {
-				log.debug("Schwerwiegender Fehler beim Anlegen eines TCP-Sockets mit Portnummer "
-						+ port + ": " + e);
-				throw e;
-			}
+	public TcpServerSocketAudit(int port)
+			throws BindException, IOException {
+
+		try {
+			serverSocket = new java.net.ServerSocket(port);
+		} catch (BindException e) { 
+			log.debug(
+					"Port " + port + " auf dem Rechner schon in Benutzung, Bind Exception: " + e);
+			throw e;
+		} catch (IOException e) {
+			log.debug("Schwerwiegender Fehler beim Anlegen eines TCP-Sockets mit Portnummer "
+					+ port + ": " + e);
+			throw e;
 		}
+	}
 		
-		// Akzeptiert die Verbindung.
-		public Connection accept() throws IOException {
-			return new TcpConnectionAudit(serverSocket.accept());
-		}
+	
+
+	// Akzeptiert die Verbindung.
+	public Connection accept() throws IOException {
+		return new TcpConnectionAudit(serverSocket.accept(), false, true);
+	}
 		
 		// Schlieﬂt die Verbindung.
 		public void close() throws IOException {

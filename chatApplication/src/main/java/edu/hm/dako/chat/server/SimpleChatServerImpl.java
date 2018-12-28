@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import auditLog.AuditLogServer;
 import edu.hm.dako.chat.common.ClientListEntry;
 import edu.hm.dako.chat.common.ExceptionHandler;
 import edu.hm.dako.chat.connection.Connection;
@@ -27,6 +28,7 @@ public class SimpleChatServerImpl extends AbstractChatServer {
 
 	private static Log log = LogFactory.getLog(SimpleChatServerImpl.class);
 	private static  InetSocketAddress adress; // TEST
+	private static String schlieﬂen;
 	
 	// Threadpool fuer Worker-Threads
 	private final ExecutorService executorService;
@@ -129,8 +131,15 @@ public class SimpleChatServerImpl extends AbstractChatServer {
 		log.debug("Listen-Socket geschlossen");
 		executorService.shutdown();
 		log.debug("Threadpool freigegeben");
-
-		System.out.println("SimpleChatServer beendet sich");
+		
+		// test
+		schlieﬂen = "SimpleChatServer beendet sich";
+		System.out.println(schlieﬂen);
+		
+	}
+	
+	public static String getSchlieﬂen() {
+		return schlieﬂen;
 	}
 	
 	// Meine Tests ggf. Lˆschen!!!!!!!!!!!!

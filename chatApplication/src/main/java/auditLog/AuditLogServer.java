@@ -3,6 +3,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
+import edu.hm.dako.chat.server.SimpleChatServerImpl;
 import edu.hm.dako.chat.tcp.EchoWorkerThread;
 import edu.hm.dako.chat.tcp.TcpConnection;
 import edu.hm.dako.chat.tcp.TcpConnectionAudit;
@@ -14,9 +15,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class AuditLogServer {
+	
 	TcpServerSocketAudit serverSocket = null;
 	TcpConnectionAudit con = null;
-	
+
 	public static void main (String [] args) {
 		System.out.println("Server gestartet");
 		AuditLogServer server = new AuditLogServer();
@@ -29,20 +31,22 @@ public class AuditLogServer {
 	
 
 	// AuditLog ist solange geöffnet wie die Bedingung true ist.
-	boolean listening = true;
+		
+
+	boolean listening =  true;
 	while (listening) {
+
 		try {
 			System.out.println("Server wartet auf Verbindung...");
 			TcpConnectionAudit con = server.waitForConnection();
 			EchoWorkerThread ewt = new EchoWorkerThread(con);
 			ewt.start();
 		}catch(Exception e) {
-			System.out.println("Exception beim WorkerThread");
+			System.out.println("Exception beim Verbindungsaufbau...");
 			listening = false;
 			server.close();
 			}
 		}
-	
 	}
 	
 	// Erstellt ein neues Socket.

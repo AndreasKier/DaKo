@@ -21,7 +21,7 @@ public class EchoWorkerThread extends Thread {
 //		System.out.println(this.getName() + "gestartet");
 //		while (connect == true) {
 //			try {
-////				echo();
+//				echo();
 //				
 //			}catch(Exception e) {
 //				try {
@@ -34,8 +34,8 @@ public class EchoWorkerThread extends Thread {
 //			}
 //		}
 //	}
-	
-	// PDU wird noch benötigt.
+//	
+//	// PDU wird noch benötigt.
 //	private void echo() throws Exception{
 //		try {
 //			MeinePDU receivedPDU =(MeinePDU) con.receive();

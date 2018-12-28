@@ -46,17 +46,7 @@ public final class ServerFactory {
 	 * @return
 	 * @throws Exception
 	 */
-	//TEST
-	
-//	public ServerFactory(String hostname, int port) {
-//		adress = new InetSocketAddress(hostname, port);
-//	}
-	// TEST
-//	public void main(String[]args) throws Exception {
-//		ServerFactory a = new ServerFactory("localhost", 50001);
-//		a.sendMessage("HALLO");
-//	}
-	
+
 	public static ChatServerInterface getServer(ImplementationType implType, int serverPort,
 			int sendBufferSize, int receiveBufferSize,
 			ChatServerGuiInterface serverGuiInterface) throws Exception {
@@ -87,27 +77,6 @@ public final class ServerFactory {
 			} catch (Exception e) {
 				throw new Exception(e);
 			}
-			
-			
-//			
-//		case TEST:
-//			try {
-//				System.out.println("[Client] Verbindet zu Server");
-//				Socket socket = new Socket();
-//				socket.connect(adress, 50001);
-//				System.out.println("[Client] Verbunden :)");
-//				
-//				System.out.println("[Client] Sende Nachricht....");
-//				PrintWriter pw = new PrintWriter (new OutputStreamWriter(socket.getOutputStream()));
-//				pw.println("");
-//				pw.flush();
-//				System.out.println("[Client] Nachricht gesendet!!!");
-//				
-//				pw.close();
-//				socket.close();
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//			}
 			
 			
 		default:
