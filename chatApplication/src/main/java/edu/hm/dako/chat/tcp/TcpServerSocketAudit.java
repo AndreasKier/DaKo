@@ -11,7 +11,8 @@ import edu.hm.dako.chat.connection.Connection;
 public class TcpServerSocketAudit {
 	private static java.net.ServerSocket serverSocket;
 	private static Log log = LogFactory.getLog(TcpServerSocketAudit.class);
-	// TEST
+	
+		// Erstellt einen ServerSocket mit Tcp.
 		public TcpServerSocketAudit(int port) throws BindException, IOException{
 			try {
 				serverSocket = new java.net.ServerSocket(port);
@@ -26,15 +27,19 @@ public class TcpServerSocketAudit {
 			}
 		}
 		
+		// Akzeptiert die Verbindung.
 		public Connection accept() throws IOException {
 			return new TcpConnectionAudit(serverSocket.accept());
 		}
+		
+		// Schlieﬂt die Verbindung.
 		public void close() throws IOException {
 			log.debug(
 					"Serversocket wird geschlossen, lokaler Port: " + serverSocket.getLocalPort());
 			serverSocket.close();
 		}
-
+		
+		// Gibt an das die Verbindung geschlossen ist.
 		public boolean isClosed() {
 			return serverSocket.isClosed();
 		}

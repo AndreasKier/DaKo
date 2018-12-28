@@ -20,7 +20,8 @@ public class TcpConnectionAudit implements Connection {
 	private Socket socket;
 	private static Log log = LogFactory.getLog(TcpConnectionAudit.class);
 	
-	// TEST
+
+		// Leicht gekürzter Code.
 		public TcpConnectionAudit (Socket socket) throws IOException {
 			this.socket = socket;
 			try {
@@ -30,6 +31,11 @@ public class TcpConnectionAudit implements Connection {
 				throw new RuntimeException(e);
 			}
 		}
+		
+		/*
+		 * Rauskopiert vom Herrn Mandl am 27.12.2018
+		 *
+		 */
 		
 		@Override
 		public Serializable receive(int timeout)

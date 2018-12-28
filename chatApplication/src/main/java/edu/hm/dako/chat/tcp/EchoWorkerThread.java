@@ -2,6 +2,7 @@ package edu.hm.dako.chat.tcp;
 
 import auditLog.MeinePDU;
 
+// Evtl noch umbennen
 public class EchoWorkerThread extends Thread {
 	
 	private static int nrWorkerThread = 0;
@@ -15,6 +16,7 @@ public class EchoWorkerThread extends Thread {
 		this.setName("WorkerThread-" + nrWorkerThread);
 	}
 	
+	// Für die PDU zum verschicken von Nachrichten.
 //	public void run() {
 //		System.out.println(this.getName() + "gestartet");
 //		while (connect == true) {
@@ -33,6 +35,7 @@ public class EchoWorkerThread extends Thread {
 //		}
 //	}
 	
+	// PDU wird noch benötigt.
 //	private void echo() throws Exception{
 //		try {
 //			MeinePDU receivedPDU =(MeinePDU) con.receive();

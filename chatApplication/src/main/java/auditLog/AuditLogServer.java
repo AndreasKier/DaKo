@@ -28,7 +28,7 @@ public class AuditLogServer {
 		}
 	
 
-	
+	// AuditLog ist solange geöffnet wie die Bedingung true ist.
 	boolean listening = true;
 	while (listening) {
 		try {
@@ -45,6 +45,7 @@ public class AuditLogServer {
 	
 	}
 	
+	// Erstellt ein neues Socket.
 	private void createSocket(){
 		try {
 			serverSocket = new TcpServerSocketAudit(50001);
@@ -53,6 +54,7 @@ public class AuditLogServer {
 		}
 	}
 	
+	// Wartet daruaf das eine Verbindung akzeptiert wird.
 	private TcpConnectionAudit waitForConnection() throws Exception {
 		try {
 			TcpConnectionAudit con = (TcpConnectionAudit) serverSocket.accept();
@@ -64,6 +66,7 @@ public class AuditLogServer {
 		}
 	}
 	
+	// Schließt die Verbindung.
 	private void close() {
 		try {
 			con.close();
