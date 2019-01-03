@@ -35,7 +35,7 @@ public class AuditLogPDU implements Serializable {
 		private String eventUserName;
 		
 		// Nutzdaten (eigentliche Chat-Nachricht in Textform)
-		private static String message;
+		private String message;
 		
 		// Name des Client-Threads, der den Request absendet
 		private String clientThreadName;
@@ -82,7 +82,7 @@ public class AuditLogPDU implements Serializable {
 		this.eventUserName = eventUserName;
 	}
 
-	public static String getMessage() {
+	public String getMessage() {
 		return message;
 	}
 
@@ -135,6 +135,8 @@ public class AuditLogPDU implements Serializable {
 		this.message = message;
 	}
 	
+	public static DateiProtocoll datei; 
+	
 	public String toString() {
 		
 		
@@ -154,6 +156,54 @@ public class AuditLogPDU implements Serializable {
 	*welche Events werden gebraucht?
 	*
 	*/
+
+	public static AuditLogPDU createLoginEventPdu(String userName, AuditLogPDU reseivePdu) {
+
+		AuditLogPDU pdu = new AuditLogPDU();
+		pdu.setPduType(PduType.LOGIN_EVENT);
+		//pdu.setServerThreadName(Thread.currentThread().getName());
+		//pdu.setClientThreadName(receivedPdu.getClientThreadName());
+		pdu.setUserName(userName);
+//		pdu.setEventUserName(AuditLogPDU.getUserName());
+//		pdu.setUserName(AuditLogPDU.getUserName());
+		return pdu;
+	}
 	
+//	public static AuditLogPDU createProtocoll(AuditLogPDU empfangPDU) {
+//		datei.schreiben();
+//		return empfangPDU;
+//	}
 	
+	public static AuditLogPDU createLoginResponsePdu(String eventInitiator, AuditLogPDU receivedPdu) {
+
+		AuditLogPDU pdu = new AuditLogPDU();
+		pdu.setPduType(PduType.LOGIN_RESPONSE);
+		pdu.setServerThreadName(Thread.currentThread().getName());
+		pdu.setClientThreadName(receivedPdu.getClientThreadName());
+		pdu.setUserName(eventInitiator);
+		return pdu;
+	}
+	
+	public static AuditLogPDU createChatMessageEventPdu(String userName, AuditLogPDU receivedPdu) {
+
+		AuditLogPDU pdu = new AuditLogPDU();
+		pdu.setPduType(PduType.CHAT_MESSAGE_EVENT);
+		pdu.setServerThreadName(Thread.currentThread().getName());
+		//pdu.setClientThreadName(receivedPdu.getClientThreadName());
+		pdu.setUserName(userName);
+		//pdu.setEventUserName(AuditLogPDU.getUserName());
+		pdu.setMessage(receivedPdu.getMessage());
+		return pdu;
+	}
+	
+	public static AuditLogPDU createLogoutEventPdu(String userName, AuditLogPDU receivedPdu) {
+
+		AuditLogPDU pdu = new AuditLogPDU();
+		pdu.setPduType(PduType.LOGOUT_EVENT);
+		pdu.setUserName(userName);
+		pdu.setEventUserName(userName);
+//		pdu.setServerThreadName(Thread.currentThread().getName());
+//		pdu.setClientThreadName(receivedPdu.getClientThreadName());
+		return pdu;
+	}
 }

@@ -1,0 +1,32 @@
+03.01.2019 13:31:55	Login-Event	Kathi	WorkerThreadsID	ThreadID	
+03.01.2019 13:34:50	Login-Event	Franzi	WorkerThreadsID	ThreadID	
+03.01.2019 13:34:57	Login-Event	Eva	WorkerThreadsID	ThreadID	
+03.01.2019 13:49:22	Login-Event	Kathi	WorkerThreadsID	ThreadID	
+03.01.2019 13:55:00	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 13:58:48	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:01:45	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:03:04	Chat-Message-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:04:31	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:04:34	Chat-Message-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:04:39	Chat-Message-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:04:49	Login-Event	Franzi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:05:06	Chat-Message-Event	Franzi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:05:09	Chat-Message-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:07:55	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:07:59	Chat-Message-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:08:01	Logout-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:14:36	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:21:38	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:24:29	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:24:34	Chat-Message-Event	Kathi	null	WorkerThreadsID	ThreadID	
+03.01.2019 14:24:40	Chat-Message-Event	Kathi	null	WorkerThreadsID	ThreadID	
+03.01.2019 14:24:42	Logout-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:29:21	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:31:44	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:33:13	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:37:14	Login-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:37:17	Chat-Message-Event	Kathi	null	WorkerThreadsID	ThreadID	
+03.01.2019 14:37:19	Logout-Event	Kathi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:48:42	Login-Event	Franzi	 	WorkerThreadsID	ThreadID	
+03.01.2019 14:48:47	Chat-Message-Event	Franzi	null	WorkerThreadsID	ThreadID	
+03.01.2019 14:48:50	Logout-Event	Franzi	 	WorkerThreadsID	ThreadID	

@@ -5,6 +5,8 @@ import java.util.Vector;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import auditLog.AuditLogPDU;
+import auditLog.DateiProtocoll;
 import edu.hm.dako.chat.common.ChatPDU;
 import edu.hm.dako.chat.common.ClientConversationStatus;
 import edu.hm.dako.chat.common.ClientListEntry;
@@ -12,6 +14,7 @@ import edu.hm.dako.chat.common.ExceptionHandler;
 import edu.hm.dako.chat.connection.Connection;
 import edu.hm.dako.chat.connection.ConnectionTimeoutException;
 import edu.hm.dako.chat.connection.EndOfFileException;
+import edu.hm.dako.chat.tcp.EchoWorkerThread;
 
 /**
  * Worker-Thread zur serverseitigen Bedienung einer Session mit einem Client.
@@ -85,11 +88,18 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 			}
 		}
 	}
+	
+	//Auditlog änderung
+	protected void updateProtocoll(AuditLogPDU pdu) {
+		DateiProtocoll audit = new DateiProtocoll();
+		audit.schreiben(pdu);
+	}
 
 	@Override
-	protected void loginRequestAction(ChatPDU receivedPdu) {
+	protected void loginRequestAction(ChatPDU receivedPdu, AuditLogPDU empfangPdu) {
 
 		ChatPDU pdu;
+		AuditLogPDU auditpdu;
 		log.debug("Login-Request-PDU fuer " + receivedPdu.getUserName() + " empfangen");
 
 		// Neuer Client moechte sich einloggen, Client in Client-Liste
@@ -108,19 +118,32 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 			Thread.currentThread().setName(receivedPdu.getUserName());
 			log.debug("Laenge der Clientliste: " + clients.size());
 			serverGuiInterface.incrNumberOfLoggedInClients();
+			
+			//Änderung AuditPDU
+			String userNameAudit = userName;
+			String clientThreadNameAudit = clientThreadName;
 
 			// Login-Event an alle Clients (auch an den gerade aktuell
 			// anfragenden) senden
 
 			Vector<String> clientList = clients.getClientNameList();
 			pdu = ChatPDU.createLoginEventPdu(userName, clientList, receivedPdu);
+			//änderung audit!!!
+			auditpdu = AuditLogPDU.createLoginEventPdu(userNameAudit, empfangPdu);
+			updateProtocoll(auditpdu);
+//			AuditLogPDU.createProtocoll(auditpdu);			
+		
 			sendLoginListUpdateEvent(pdu);
+			
 
 			// Login Response senden
 			ChatPDU responsePdu = ChatPDU.createLoginResponsePdu(userName, receivedPdu);
+			//AuditLogPDU responseAuditPDU = AuditLogPDU.createLoginResponsePdu(userNameAudit, empfangPDU); //Änderung audit
 
 			try {
 				clients.getClient(userName).getConnection().send(responsePdu);
+				
+				
 			} catch (Exception e) {
 				log.debug("Senden einer Login-Response-PDU an " + userName + " fehlgeschlagen");
 				log.debug("Exception Message: " + e.getMessage());
@@ -147,11 +170,13 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 			}
 		}
 	}
+	
 
 	@Override
-	protected void logoutRequestAction(ChatPDU receivedPdu) {
+	protected void logoutRequestAction(ChatPDU receivedPdu, AuditLogPDU empfangPdu) {
 
 		ChatPDU pdu;
+		AuditLogPDU auditpdu;
 		logoutCounter.getAndIncrement();
 		log.debug("Logout-Request von " + receivedPdu.getUserName() + ", LogoutCount = "
 				+ logoutCounter.get());
@@ -165,6 +190,9 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 			// Event an Client versenden
 			Vector<String> clientList = clients.getClientNameList();
 			pdu = ChatPDU.createLogoutEventPdu(userName, clientList, receivedPdu);
+			//änderung audit!!!!
+			auditpdu = AuditLogPDU.createLogoutEventPdu(userName, empfangPdu);
+			updateProtocoll(auditpdu);
 
 			clients.changeClientStatus(receivedPdu.getUserName(),
 					ClientConversationStatus.UNREGISTERING);
@@ -199,8 +227,9 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 		}
 	}
 
+	//änderung audit
 	@Override
-	protected void chatMessageRequestAction(ChatPDU receivedPdu) {
+	protected void chatMessageRequestAction(ChatPDU receivedPdu, AuditLogPDU empfangPdu) {
 
 		ClientListEntry client = null;
 		clients.setRequestStartTime(receivedPdu.getUserName(), startTime);
@@ -215,6 +244,9 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 			// Liste der betroffenen Clients ermitteln
 			Vector<String> sendList = clients.getClientNameList();
 			ChatPDU pdu = ChatPDU.createChatMessageEventPdu(userName, receivedPdu);
+			//änderung audit
+			AuditLogPDU auditpdu = AuditLogPDU.createChatMessageEventPdu(userName, empfangPdu);
+			updateProtocoll(auditpdu);
 
 			// Event an Clients senden
 			for (String s : new Vector<String>(sendList)) {
@@ -373,6 +405,7 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 
 		// Warten auf naechste Nachricht
 		ChatPDU receivedPdu = null;
+		AuditLogPDU empfangPdu = null; 
 
 		// Nach einer Minute wird geprueft, ob Client noch eingeloggt ist
 		final int RECEIVE_TIMEOUT = 1200000;
@@ -430,17 +463,17 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 
 			case LOGIN_REQUEST:
 				// Login-Request vom Client empfangen				Wird an die AuditLogPDU geschickt.
-				loginRequestAction(receivedPdu);					
+				loginRequestAction(receivedPdu, empfangPdu);
 				break;
 
 			case CHAT_MESSAGE_REQUEST:
 				// Chat-Nachricht angekommen, an alle verteilen
-				chatMessageRequestAction(receivedPdu);
+				chatMessageRequestAction(receivedPdu, empfangPdu);
 				break;
 
 			case LOGOUT_REQUEST:
 				// Logout-Request vom Client empfangen
-				logoutRequestAction(receivedPdu);
+				logoutRequestAction(receivedPdu, empfangPdu);
 				break;
 
 			default:

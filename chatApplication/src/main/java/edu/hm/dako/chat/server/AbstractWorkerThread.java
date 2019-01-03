@@ -2,6 +2,7 @@ package edu.hm.dako.chat.server;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import auditLog.AuditLogPDU;
 import edu.hm.dako.chat.common.ChatPDU;
 import edu.hm.dako.chat.connection.Connection;
 
@@ -56,7 +57,8 @@ public abstract class AbstractWorkerThread extends Thread {
 	 * @param receivedPdu
 	 *          Empfangene PDU
 	 */
-	protected abstract void loginRequestAction(ChatPDU receivedPdu);
+	//änderung audit!!!!!!!!!!!!!!!!!!
+	protected abstract void loginRequestAction(ChatPDU receivedPdu, AuditLogPDU empfangPdu);
 
 	/**
 	 * Aktion fuer die Behandlung ankommender Logout-Requests: Alle Clients
@@ -65,7 +67,8 @@ public abstract class AbstractWorkerThread extends Thread {
 	 * @param receivedPdu
 	 *          Empfangene PDU
 	 */
-	protected abstract void logoutRequestAction(ChatPDU receivedPdu);
+	//änderung audit!!!!!!
+	protected abstract void logoutRequestAction(ChatPDU receivedPdu, AuditLogPDU empfangPdu);
 
 	/**
 	 * Aktion fuer die Behandlung ankommender ChatMessage-Requests: Chat-Nachricht
@@ -74,7 +77,8 @@ public abstract class AbstractWorkerThread extends Thread {
 	 * @param receivedPdu
 	 *          Empfangene PDU
 	 */
-	protected abstract void chatMessageRequestAction(ChatPDU receivedPdu);
+	//Änderung audit!!!
+	protected abstract void chatMessageRequestAction(ChatPDU receivedPdu, AuditLogPDU empfangPdu);
 
 	/**
 	 * Aktion fuer die Behandlung ankommender ChatMessageConfirm-PDUs

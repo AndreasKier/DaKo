@@ -9,7 +9,7 @@ import java.text.*;
 
 public class DateiProtocoll {
 
-	public  void schreiben() {
+	public void schreiben(AuditLogPDU pdu) {
 		
 		FileWriter writer;
 		File file;
@@ -31,8 +31,12 @@ public class DateiProtocoll {
 			writer.write(AuditLogPDU.getUserName()+ "\t");
 			
 			//if bedingungen: wenn das Event eine Message ist, dann auch die Message ausgeben
-			if(AuditLogPDU.getPduType().equals(PduType.CHAT_MESSAGE_REQUEST)) {
-				writer.write(AuditLogPDU.getMessage()+ "\t");
+			if(AuditLogPDU.getPduType().equals(PduType.CHAT_MESSAGE_EVENT)) {
+//			if(AuditLogPDU.getPduType() == PduType.CHAT_MESSAGE_REQUEST) {	
+				writer.write(pdu.getMessage()+ "\t");
+			}
+			else {
+				writer.write(" "+ "\t");
 			}
 			
 			writer.write("WorkerThreadsID\t");
