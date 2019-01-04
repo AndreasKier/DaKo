@@ -46,3 +46,6 @@
 04.01.2019 14:29:59  Chat-Message-Event   Max        ich werde auf einen Berg gehen  WTID     TID     
 04.01.2019 14:30:01  Logout-Event         Lisa       null                      WTID     TID     
 04.01.2019 14:30:04  Logout-Event         Max        null                      WTID     TID     
+04.01.2019 14:36:52  Login-Event          Luke                                 WTID     TID     
+04.01.2019 14:36:56  Chat-Message-Event   Luke       Hallo                     WTID     TID     
+04.01.2019 14:36:58  Logout-Event         Luke                                 WTID     TID     

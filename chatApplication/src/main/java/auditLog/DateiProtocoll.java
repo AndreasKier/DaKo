@@ -25,10 +25,15 @@ public class DateiProtocoll {
 			//Daten für das Protokoll
 			DateFormat dateTimeInstance = SimpleDateFormat.getDateTimeInstance();
 			
-			String pduType = (AuditLogPDU.getPduType()).toString();
+			PduType Type = (AuditLogPDU.getPduType());
+			String pduType = Type.toString();
 			String userName = AuditLogPDU.getUserName();
 			String time = dateTimeInstance.format(Calendar.getInstance().getTime());
-			String message = AuditLogPDU.getMessage();
+			String message; 
+			if(Type.equals(PduType.CHAT_MESSAGE_EVENT)) {
+				message = AuditLogPDU.getMessage();
+			} else
+				message = ""; 
 			
 			String formatStr = "%-20s %-20s %-10s %-25s %-8s %-8s";
 			writer.write(String.format(formatStr, time, pduType, userName, message, "WTID", "TID"));
