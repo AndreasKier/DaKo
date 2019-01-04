@@ -245,7 +245,9 @@ public class SimpleChatWorkerThreadImpl extends AbstractWorkerThread {
 			Vector<String> sendList = clients.getClientNameList();
 			ChatPDU pdu = ChatPDU.createChatMessageEventPdu(userName, receivedPdu);
 			//änderung audit
-			AuditLogPDU auditpdu = AuditLogPDU.createChatMessageEventPdu(userName, empfangPdu);
+			AuditLogPDU auditpdu;
+			String message = receivedPdu.getMessage();
+			auditpdu = AuditLogPDU.createChatMessageEventPdu(userName, message, empfangPdu);
 			updateProtocoll(auditpdu);
 
 			// Event an Clients senden

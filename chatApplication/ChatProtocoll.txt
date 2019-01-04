@@ -1,0 +1,48 @@
+04.01.2019 12:33:21  Login-Event          Kathi      null                      WTID     TID     
+04.01.2019 12:34:47  Login-Event          Kathi      null                      WTID     TID     
+04.01.2019 12:58:28  Login-Event          Kathi      null                      WTID     TID     
+04.01.2019 12:58:32  Chat-Message-Event   Kathi      null                      WTID     TID     
+04.01.2019 12:58:34  Logout-Event         Kathi      null                      WTID     TID     
+04.01.2019 13:29:24  Login-Event          Max        null                      WTID     TID     
+04.01.2019 13:29:28  Chat-Message-Event   Max        null                      WTID     TID     
+04.01.2019 13:29:32  Chat-Message-Event   Max        null                      WTID     TID     
+04.01.2019 13:29:34  Logout-Event         Max        null                      WTID     TID     
+04.01.2019 13:40:12  Login-Event          Lisa       null                      WTID     TID     
+04.01.2019 13:40:15  Chat-Message-Event   Lisa       null                      WTID     TID     
+04.01.2019 13:40:20  Chat-Message-Event   Lisa       null                      WTID     TID     
+04.01.2019 13:40:22  Chat-Message-Event   Lisa       null                      WTID     TID     
+04.01.2019 13:40:23  Chat-Message-Event   Lisa       null                      WTID     TID     
+04.01.2019 13:40:24  Chat-Message-Event   Lisa       null                      WTID     TID     
+04.01.2019 13:40:24  Chat-Message-Event   Lisa       null                      WTID     TID     
+04.01.2019 13:40:27  Logout-Event         Lisa       null                      WTID     TID     
+04.01.2019 13:41:51  Login-Event          Stefan     null                      WTID     TID     
+04.01.2019 13:41:55  Chat-Message-Event   Stefan     null                      WTID     TID     
+04.01.2019 13:42:06  Login-Event          Ramona     null                      WTID     TID     
+04.01.2019 13:42:18  Chat-Message-Event   Ramona     null                      WTID     TID     
+04.01.2019 13:42:22  Chat-Message-Event   Stefan     null                      WTID     TID     
+04.01.2019 13:42:26  Chat-Message-Event   Ramona     null                      WTID     TID     
+04.01.2019 13:42:29  Chat-Message-Event   Stefan     null                      WTID     TID     
+04.01.2019 13:42:30  Chat-Message-Event   Stefan     null                      WTID     TID     
+04.01.2019 13:42:35  Chat-Message-Event   Ramona     null                      WTID     TID     
+04.01.2019 13:42:38  Logout-Event         Stefan     null                      WTID     TID     
+04.01.2019 13:42:43  Chat-Message-Event   Ramona     null                      WTID     TID     
+04.01.2019 13:42:45  Logout-Event         Ramona     null                      WTID     TID     
+04.01.2019 13:53:00  Login-Event          Luisa      null                      WTID     TID     
+04.01.2019 13:53:04  Chat-Message-Event   Luisa      null                      WTID     TID     
+04.01.2019 13:53:07  Logout-Event         Luisa      null                      WTID     TID     
+04.01.2019 14:18:38  Login-Event          Kathi      null                      WTID     TID     
+04.01.2019 14:22:34  Chat-Message-Event   Kathi      Hallo                     WTID     TID     
+04.01.2019 14:27:23  Login-Event          Kathi      null                      WTID     TID     
+04.01.2019 14:27:26  Chat-Message-Event   Kathi      Hallo                     WTID     TID     
+04.01.2019 14:27:28  Logout-Event         Kathi      null                      WTID     TID     
+04.01.2019 14:28:29  Login-Event          Lisa       null                      WTID     TID     
+04.01.2019 14:28:48  Login-Event          Max        null                      WTID     TID     
+04.01.2019 14:28:55  Chat-Message-Event   Lisa       Hallo                     WTID     TID     
+04.01.2019 14:29:01  Chat-Message-Event   Max        Servus                    WTID     TID     
+04.01.2019 14:29:05  Chat-Message-Event   Lisa       wie gehts                 WTID     TID     
+04.01.2019 14:29:12  Chat-Message-Event   Max        gut danke und dir?        WTID     TID     
+04.01.2019 14:29:15  Chat-Message-Event   Lisa       auch gut                  WTID     TID     
+04.01.2019 14:29:49  Chat-Message-Event   Lisa       was unternimmst du heute bei diesen schönen Wetter? WTID     TID     
+04.01.2019 14:29:59  Chat-Message-Event   Max        ich werde auf einen Berg gehen  WTID     TID     
+04.01.2019 14:30:01  Logout-Event         Lisa       null                      WTID     TID     
+04.01.2019 14:30:04  Logout-Event         Max        null                      WTID     TID     

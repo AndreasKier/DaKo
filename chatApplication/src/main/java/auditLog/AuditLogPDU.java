@@ -35,7 +35,7 @@ public class AuditLogPDU implements Serializable {
 		private String eventUserName;
 		
 		// Nutzdaten (eigentliche Chat-Nachricht in Textform)
-		private String message;
+		private static String message;
 		
 		// Name des Client-Threads, der den Request absendet
 		private String clientThreadName;
@@ -82,12 +82,12 @@ public class AuditLogPDU implements Serializable {
 		this.eventUserName = eventUserName;
 	}
 
-	public String getMessage() {
+	public static String getMessage() {
 		return message;
 	}
 
 	public void setMessage(String message) {
-		this.message = message;
+		AuditLogPDU.message = message;
 	}
 
 	public int getErrorCode() {
@@ -184,7 +184,7 @@ public class AuditLogPDU implements Serializable {
 		return pdu;
 	}
 	
-	public static AuditLogPDU createChatMessageEventPdu(String userName, AuditLogPDU receivedPdu) {
+	public static AuditLogPDU createChatMessageEventPdu(String userName, String message, AuditLogPDU receivedPdu) {
 
 		AuditLogPDU pdu = new AuditLogPDU();
 		pdu.setPduType(PduType.CHAT_MESSAGE_EVENT);
@@ -192,7 +192,7 @@ public class AuditLogPDU implements Serializable {
 		//pdu.setClientThreadName(receivedPdu.getClientThreadName());
 		pdu.setUserName(userName);
 		//pdu.setEventUserName(AuditLogPDU.getUserName());
-		pdu.setMessage(receivedPdu.getMessage());
+		pdu.setMessage(message);
 		return pdu;
 	}
 	

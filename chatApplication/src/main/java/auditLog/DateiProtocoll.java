@@ -15,38 +15,50 @@ public class DateiProtocoll {
 		File file;
 		
 		//File anlegen
-		file = new File("FileTest.txt");
+		file = new File("ChatProtocoll.txt");
 		try {
+			
+			
 			// falls die Datei bereits existiert werden die Bytes an das Ende der Datei geschrieben
 			writer = new FileWriter(file, true);
+			
+			//Daten für das Protokoll
 			DateFormat dateTimeInstance = SimpleDateFormat.getDateTimeInstance();
 			
-			//Zeitstemple
-			writer.write(dateTimeInstance.format(Calendar.getInstance().getTime())+ "\t");
+			String pduType = (AuditLogPDU.getPduType()).toString();
+			String userName = AuditLogPDU.getUserName();
+			String time = dateTimeInstance.format(Calendar.getInstance().getTime());
+			String message = AuditLogPDU.getMessage();
 			
-			//text wird in den Stream geschrieben
-			writer.write(AuditLogPDU.getPduType()+ "\t");
-			//writer.write(System.getProperty("line.separator"));
+			String formatStr = "%-20s %-20s %-10s %-25s %-8s %-8s";
+			writer.write(String.format(formatStr, time, pduType, userName, message, "WTID", "TID"));
 			
-			writer.write(AuditLogPDU.getUserName()+ "\t");
-			
-			//if bedingungen: wenn das Event eine Message ist, dann auch die Message ausgeben
-			if(AuditLogPDU.getPduType().equals(PduType.CHAT_MESSAGE_EVENT)) {
-//			if(AuditLogPDU.getPduType() == PduType.CHAT_MESSAGE_REQUEST) {	
-				writer.write(pdu.getMessage()+ "\t");
-			}
-			else {
-				writer.write(" "+ "\t");
-			}
-			
-			writer.write("WorkerThreadsID\t");
-			
-			writer.write("ThreadID\t");
-			
-			
-			//springt in die nächste Zeile (unabhängig vom System)
-			//writer.write(System.getProperty("line.separator"));
-			
+//			//Zeitstemple
+//			writer.write(time+ "\t");
+//			
+//			//text wird in den Stream geschrieben
+//			writer.write(pduType + "\t");
+//			//writer.write(System.getProperty("line.separator"));
+//			
+//			writer.write(userName+ "\t");
+//			
+//			//if bedingungen: wenn das Event eine Message ist, dann auch die Message ausgeben
+//			if(pduType.equals(PduType.CHAT_MESSAGE_EVENT)) {
+////			if(AuditLogPDU.getPduType() == PduType.CHAT_MESSAGE_REQUEST) {	
+//				writer.write(message + "\t");
+//			}
+//			else {
+//				writer.write(" "+ "\t");
+//			}
+//			
+//			writer.write("WorkerThreadsID\t");
+//			
+//			writer.write("ThreadID\t");
+//			
+//			
+//			//springt in die nächste Zeile (unabhängig vom System)
+//			//writer.write(System.getProperty("line.separator"));
+//			
 			writer.write(System.getProperty("line.separator"));
 			writer.flush();
 			
